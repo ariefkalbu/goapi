@@ -1,10 +1,10 @@
 package ctrlProduct
 
 import (
+	"goapi/model"
 	"log"
 	"net/http"
 
-	"../../model"
 	"github.com/gin-gonic/gin"
 )
 
@@ -23,10 +23,9 @@ func ProductQueryHandler(c *gin.Context) {
 }
 
 func ProductPostHandler(c *gin.Context) {
+	var product model.ProductModel
 
-	var product model.Product
-
-	err := c.ShouldBindJSON(product)
+	err := c.ShouldBindJSON(&product)
 
 	if err != nil {
 		log.Fatal()
@@ -34,5 +33,7 @@ func ProductPostHandler(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{
 		"ProductName": product.ProductName,
+		"Price":       product.Price,
+		"Description": product.ProductDescription,
 	})
 }

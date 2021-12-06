@@ -18,7 +18,7 @@ func main() {
 	router.GET("/", ctrlRoot.RootHandler)
 	router.GET("/Product/:id/:name", ctrlProduct.ProductHandler) // ini Path Variable
 	router.GET("/ProductQuery", ctrlProduct.ProductQueryHandler) // ini Query String
-	router.GET("/ProductPost/", ctrlProduct.ProductPostHandler)  // ini POST
+	router.POST("/ProductPost", ctrlProduct.ProductPostHandler)  // ini POST
 
 	router.Run() //bisa diubah port nya router.Run(":71"), secara default port nya adalah 8080
 }
